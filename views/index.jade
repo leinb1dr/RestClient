@@ -1,5 +1,5 @@
 extend layout
-block content
+block request
   form(ng-submit='executeServiceCall(this)' method='post')
     // Overall Options
     .row
@@ -14,13 +14,13 @@ block content
         input(ng-model='port' type='text' name='port' id='port' maxLength='4' size='4')
     // Operation
     .row.row-space
-      .col-lg-2 URL:
+      .col-lg-1 URL:
       .col-lg-6
         input(ng-model='url' type='text' name='url' id='url').col-lg-12
       .col-lg-2 Method:
-      .col-lg-2
+      .col-lg-3
         select(ng-model='httpMethod' ng-options='choice for choice in httpMethods')
-    // Headers        
+    // Request Headers        
     .row.row-space
       .col-lg-2 Headers:
       .col-lg-8.multi-line-input
@@ -44,27 +44,36 @@ block content
         input(type='button' name='add' value='add' ng-click='addQueryParam()').center-block
     // Request Body
     .row.row-space
-      .row
-        .col-lg-2 Body:
-        .col-lg-8 
-        .col-lg-2
-          select(ng-model='requestMode' ng-change='updateRequestEditor()' ng-options='choice for choice in wysiwygChoices')
-      .row
-        #request
-          function foo(items) {    var x = "All this is syntax highlighted";    return x;}
+      .col-lg-2 Body:
+      .col-lg-8 
+      .col-lg-2
+        select(ng-model='requestMode' ng-change='updateRequestEditor()' ng-options='choice for choice in wysiwygChoices')
+    .row.row-space-sm
+      #request
     .row.row-space-sm
       .col-lg-10
       .col-lg-2
         input(type='submit' value="Send")
+block response
+    // Response Headers        
+    .row.row-space
+      .col-lg-2 Headers:
+      .col-lg-8.multi-line-input
+        div(ng-repeat='header in headers').row.row-space-sm
+          .col-lg-6
+            label.center-block {{header.key}}
+          .col-lg-6
+            label.center-block {{header.value}}
+      .col-lg-2
+        input(type='button' name='add' value='add' ng-click='addHeader()').center-block
+    // Response Body
     .row.row-space-sm
-      .row
-        .col-lg-2 Response:
-        .col-lg-8 
-        .col-lg-2
-          select(ng-model='responseMode' ng-change='updateResponseEditor()' ng-options='choice for choice in wysiwygChoices')
-      .row
-        #response
-          function foo(items) {    var x = "All this is syntax highlighted";    return x;}
+      .col-lg-2 Response:
+      .col-lg-8
+      .col-lg-2
+        select(ng-model='responseMode' ng-change='updateResponseEditor()' ng-options='choice for choice in wysiwygChoices')
+    .row.row-space-sm
+      #response
 block sidebar
   .widget
     h1 Widget

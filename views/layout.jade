@@ -12,11 +12,13 @@ html(ng-app='RestClientApp')
   body(ng-controller='RestClientCtrl')
     header.page-header
       h1.text-center My Site
-    .container
+    .container-fluid
       .row
-        .col-lg-4
+        .col-lg-2
           block sidebar
-        .col-lg-8
-          block content
+        .col-lg-5
+          block request
+        .col-lg-5
+          block response
     .text-center
       p Running on node with Express, Jade and Stylus
