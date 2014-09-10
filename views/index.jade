@@ -45,11 +45,11 @@ block request
     // Request Body
     .row.row-space
       .col-lg-2 Body:
-      .col-lg-8 
-      .col-lg-2
-        select(ng-model='requestMode' ng-change='updateRequestEditor()' ng-options='choice for choice in wysiwygChoices')
+      .col-lg-10
+        select(ng-model='requestMode' ng-change='updateRequestEditor()' ng-options='choice for choice in wysiwygChoices').pull-right
     .row.row-space-sm
-      #request
+      .col-lg-12
+        #request
     .row.row-space-sm
       .col-lg-10
       .col-lg-2
@@ -58,22 +58,20 @@ block response
     // Response Headers        
     .row.row-space
       .col-lg-2 Headers:
-      .col-lg-8.multi-line-input
+      .col-lg-10.multi-line-input
         div(ng-repeat='header in headers').row.row-space-sm
           .col-lg-6
             label.center-block {{header.key}}
           .col-lg-6
             label.center-block {{header.value}}
-      .col-lg-2
-        input(type='button' name='add' value='add' ng-click='addHeader()').center-block
     // Response Body
     .row.row-space-sm
       .col-lg-2 Response:
-      .col-lg-8
-      .col-lg-2
-        select(ng-model='responseMode' ng-change='updateResponseEditor()' ng-options='choice for choice in wysiwygChoices')
+      .col-lg-10
+        label.pull-right {{'responseMode'}}
     .row.row-space-sm
-      #response
+      .col-lg-12
+        #response
 block sidebar
   .widget
     h1 Widget

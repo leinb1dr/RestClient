@@ -8,9 +8,9 @@
 }
 
 #request, #response { 
-		margin-left: 50px;
+		
         height: 200px;
-        width: 90%;
+        width: 100%;
     }
 
 .multi-line-input{
