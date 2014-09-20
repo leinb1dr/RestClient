@@ -1,0 +1,50 @@
+.modal-header
+      h3.modal-title
+            | Create A New Project
+.modal-body.row
+      form(ng-submit='console.log(this)' method='post').form-horizontal.col-md-10.col-md-offset-1
+                  .form-group
+                        label(for='projectName').col-sm-4.control-label Project Name:
+                        .col-sm-8
+                              input(ng-model='project.title' id='projectName' type='text').form-control
+                  .form-group
+                        label(for='projectDescription').col-sm-4.control-label Project Description:
+                        .col-sm-8
+                              textarea(id='projectDescription').form-control
+                  label Add Environments
+                  div(ng-repeat='environment in environments').row
+                        .form-group
+                              label(for='envName').col-sm-1.control-label Name:
+                              .col-sm-4
+                                    input(ng-model='environment.envName' id='envName').form-control
+
+                              label(for='hostName').col-sm-2.control-label Host Name:
+                              .col-sm-4
+                                    input(id='hostName').form-control
+
+                        .form-group
+                              label(for='httpType').col-sm-1.col-sm-offset-1.control-label Http[s]:
+                              .col-sm-2
+                                    select(id='httpType').form-control
+
+                              label(for='port').col-sm-1.col-sm-offset-2.control-label Port:
+                              .col-sm-2
+                                    input(id='port').form-control
+
+                              span(ng-if="!$first")
+                                    a(ng-click="removeEnvironment($index)").btn.btn-sm.btn-danger.col-sm-1.col-sm-offset-1
+                                          span.glyphicon.glyphicon-minus
+                                    a(ng-click="addEnvironment($index)").btn.btn-sm.btn-success.col-sm-1
+                                          span.glyphicon.glyphicon-plus
+                              span(ng-if="$first")
+                                    a(ng-click="addEnvironment($index)").btn.btn-sm.btn-success.col-sm-1.col-sm-offset-2
+                                          span.glyphicon.glyphicon-plus
+                        hr
+            
+
+
+.modal-footer
+      button(class="btn btn-primary" ng-click="ok()")
+            | Save
+      button(class="btn btn-warning" ng-click="cancel()")
+            | Cancel

@@ -1,11 +1,12 @@
 extend layout
+
 block request
   form(ng-submit='executeServiceCall(this)' method='post')
     // Overall Options
     .row
       .col-lg-1 HTTP[S]:
       .col-lg-2
-        select(ng-model='httpType' ng-options='choice for choice in httpOptions')
+        select(ng-model='httpType' ng-options='choice for choice in constants.httpOptions')
       .col-lg-2 Host Name:
       .col-lg-3
         input(ng-model='hostName' type='text' name='hostName' id='hostName').col-lg-12
@@ -19,7 +20,7 @@ block request
         input(ng-model='url' type='text' name='url' id='url').col-lg-12
       .col-lg-2 Method:
       .col-lg-3
-        select(ng-model='httpMethod' ng-options='choice for choice in httpMethods')
+        select(ng-model='httpMethod' ng-options='choice for choice in constants.httpMethods')
     // Request Headers        
     .row.row-space
       .col-lg-2 Headers:
@@ -46,7 +47,7 @@ block request
     .row.row-space
       .col-lg-2 Body:
       .col-lg-10
-        select(ng-model='requestMode' ng-change='updateRequestEditor()' ng-options='choice for choice in wysiwygChoices').pull-right
+        select(ng-model='requestMode' ng-change='updateRequestEditor()' ng-options='choice for choice in constants.wysiwygChoices').pull-right
     .row.row-space-sm
       .col-lg-12
         #request
@@ -59,25 +60,19 @@ block response
     .row.row-space
       .col-lg-2 Headers:
       .col-lg-10.multi-line-input
-        div(ng-repeat='header in headers').row.row-space-sm
+        div(ng-repeat='(key, value) in responseHeaders').row.row-space-sm
           .col-lg-6
-            label.center-block {{header.key}}
+            label.center-block {{key}}
           .col-lg-6
-            label.center-block {{header.value}}
+            label.center-block {{value}}
     // Response Body
     .row.row-space-sm
       .col-lg-2 Response:
       .col-lg-10
-        label.pull-right {{'responseMode'}}
+        label.pull-right {{responseMode}}
     .row.row-space-sm
       .col-lg-12
         #response
 block sidebar
   .widget
-    h1 Widget
-    p
-      | Sed auctor neque eu tellus rhoncus ut
-      | eleifend nibh porttitor. Ut in nulla enim.
-    p
-      | Vivamus hendrerit arcu sed erat molestie
-      | vehicula.
+    div(ng-view)

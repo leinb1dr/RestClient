@@ -1,0 +1,5 @@
+h1 Projects
+    input(type='button' value='Add Project' ng-click='open("lg")')
+div(ui-tree)
+  ol(ui-tree-nodes="" ng-model="item" data-nodrag id="tree-root")
+    li(ng-repeat="node in projects" ui-tree-node ng-include="'/template/tree/tree-template'")

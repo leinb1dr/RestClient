@@ -1,0 +1,5 @@
+div(ui-tree-handle) 
+  <a class="btn btn-success btn-xs" data-nodrag="" ng-click="toggle(this)"><span class="glyphicon glyphicon-chevron-down" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
+  | {{node.title}}
+  ol(ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}")
+    li(ng-repeat="node in node.nodes" ui-tree-node data-nodrag ng-include="'/template/tree/tree-template'")

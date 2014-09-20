@@ -1,0 +1,19 @@
+.row-space{
+	margin-top: 4%;
+	padding-bottom: 1%;
+}
+
+.row-space-sm{
+	margin-top: 1%;
+}
+
+#request, #response { 
+		
+        height: 200px;
+        width: 100%;
+    }
+
+.multi-line-input{
+	max-height: 150px;
+	overflow: auto;
+}
